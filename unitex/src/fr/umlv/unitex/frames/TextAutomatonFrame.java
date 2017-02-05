@@ -313,6 +313,13 @@ public class TextAutomatonFrame extends TfstFrame {
 				exportTextAsTable(delafStyle.isSelected());
 			}
 		});
+		final JButton tagFilterButton = new JButton("Filter Tags");
+		tagFilterButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GlobalProjectManager.search(null).getFrameManagerAs(InternalFrameManager.class).newTextAutomatonTagFilterDialog();
+			}
+		});
 		final ButtonGroup group = new ButtonGroup();
 		group.add(all);
 		group.add(onlyShowGramCode);
@@ -377,6 +384,7 @@ public class TextAutomatonFrame extends TfstFrame {
 		filterPanel.add(export, gbc);
 		gbc.gridwidth = GridBagConstraints.REMAINDER;
 		filterPanel.add(delafStyle, gbc);
+		filterPanel.add(tagFilterButton, gbc);
 		gbc.gridwidth = 1;
 		filterPanel.add(all, gbc);
 		filterPanel.add(onlyShowGramCode, gbc);
